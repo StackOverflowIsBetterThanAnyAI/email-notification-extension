@@ -1,0 +1,238 @@
+:root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --fg: #1f1f1f;
+    --muted: #474747;
+    --border: #747775;
+    --primary: #0b57d0;
+    --primary-fg: #ffffff;
+    --primary-hover: #0842a0;
+    --surface: #f0f4f9;
+    --error-bg: #fce8e6;
+    --error-fg: #8c1d18;
+    --focus: #0b57d0;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #1f1f1f;
+        --fg: #e3e3e3;
+        --muted: #c4c7c5;
+        --border: #8e918f;
+        --primary: #a8c7fa;
+        --primary-fg: #062e6f;
+        --primary-hover: #d3e3fd;
+        --surface: #2d2f31;
+        --error-bg: #601410;
+        --error-fg: #f9dedc;
+        --focus: #a8c7fa;
+    }
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;
+}
+
+body {
+    margin: 0;
+    width: 420px;
+    min-width: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font:
+        0.875rem/1.5 system-ui,
+        -apple-system,
+        'Segoe UI',
+        Roboto,
+        sans-serif;
+}
+
+main {
+    padding: 1rem;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+h1 {
+    font-size: 1.125rem;
+    margin: 0;
+}
+h2 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+}
+h2:focus {
+    outline: none;
+}
+h2:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+}
+
+p {
+    margin: 0 0 0.75rem;
+}
+
+.hint {
+    color: var(--muted);
+    font-size: 0.8125rem;
+}
+
+.status {
+    color: var(--muted);
+    min-height: 1.5em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.error {
+    background: var(--error-bg);
+    color: var(--error-fg);
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+.facts {
+    margin: 0 0 1rem;
+    padding: 0.75rem;
+    background: var(--surface);
+    border-radius: 8px;
+}
+.facts div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.facts dt {
+    color: var(--muted);
+}
+.facts dd {
+    margin: 0;
+    font-weight: 600;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.btn {
+    min-height: 2.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--primary);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+.btn:hover {
+    background: var(--surface);
+}
+.btn-primary {
+    background: var(--primary);
+    color: var(--primary-fg);
+    border-color: var(--primary);
+}
+.btn-primary:hover {
+    background: var(--primary-hover);
+    border-color: var(--primary-hover);
+}
+.btn-link {
+    border: none;
+    padding: 0.5rem 0;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+.btn-link:hover {
+    background: transparent;
+}
+.btn[aria-disabled='true'],
+.btn:disabled {
+    opacity: 0.6;
+    cursor: progress;
+}
+
+:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+}
+
+.settings fieldset {
+    margin: 0 0 1rem;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+.settings legend {
+    font-weight: 600;
+    padding: 0 0.25rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+.field-check {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+}
+.field-check input {
+    width: 1.125rem;
+    height: 1.125rem;
+    margin: 0;
+    accent-color: var(--primary);
+}
+.field-check + .hint {
+    margin: -0.25rem 0 0.5rem 1.625rem;
+}
+
+select {
+    min-height: 2.25rem;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg);
+    color: var(--fg);
+    font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+@media (forced-colors: active) {
+    .btn,
+    .btn-primary {
+        border: 1px solid ButtonText;
+    }
+    :focus-visible {
+        outline: 2px solid Highlight;
+    }
+}

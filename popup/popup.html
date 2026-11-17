@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Gmail Notifier</title>
+        <link rel="stylesheet" href="popup.css" />
+        <script src="popup.js" type="module"></script>
+    </head>
+    <body>
+        <main>
+            <header class="header">
+                <img src="../icons/icon32.png" alt="" width="24" height="24" />
+                <h1>Gmail Notifier</h1>
+            </header>
+
+            <p id="status" class="status" role="status" aria-live="polite"></p>
+            <p id="error" class="error" role="alert" hidden></p>
+
+            <section id="view-loading" aria-busy="true">
+                <p>Loading…</p>
+            </section>
+
+            <section
+                id="view-signed-out"
+                aria-labelledby="signed-out-heading"
+                hidden
+            >
+                <h2 id="signed-out-heading" tabindex="-1">Not signed in</h2>
+                <p>
+                    Sign in with your Google account to get a desktop
+                    notification whenever a new email arrives in your inbox.
+                </p>
+                <p class="hint">
+                    The extension only reads sender, subject and labels – never
+                    the content of your emails.
+                </p>
+                <button type="button" id="btn-sign-in" class="btn btn-primary">
+                    Sign in with Google
+                </button>
+            </section>
+
+            <section
+                id="view-signed-in"
+                aria-labelledby="signed-in-heading"
+                hidden
+            >
+                <h2 id="signed-in-heading" tabindex="-1">Signed in</h2>
+                <dl class="facts">
+                    <div>
+                        <dt>Account</dt>
+                        <dd id="account"></dd>
+                    </div>
+                    <div>
+                        <dt>Unread in inbox</dt>
+                        <dd id="unread"></dd>
+                    </div>
+                    <div>
+                        <dt>Last check</dt>
+                        <dd id="last-check"></dd>
+                    </div>
+                </dl>
+
+                <div class="actions">
+                    <button
+                        type="button"
+                        id="btn-check"
+                        class="btn btn-primary"
+                    >
+                        Check now
+                    </button>
+                    <button type="button" id="btn-open" class="btn">
+                        Open Gmail
+                    </button>
+                </div>
+
+                <form id="settings" class="settings" novalidate>
+                    <fieldset>
+                        <legend>Settings</legend>
+
+                        <div class="field field-check">
+                            <input
+                                type="checkbox"
+                                id="opt-enabled"
+                                name="enabled"
+                            />
+                            <label for="opt-enabled"
+                                >Show notifications for new emails</label
+                            >
+                        </div>
+
+                        <div class="field field-check">
+                            <input
+                                type="checkbox"
+                                id="opt-details"
+                                name="showDetails"
+                                aria-describedby="opt-details-hint"
+                            />
+                            <label for="opt-details"
+                                >Show sender and subject</label
+                            >
+                        </div>
+                        <p id="opt-details-hint" class="hint">
+                            Turn off for privacy, e.g. while sharing your
+                            screen.
+                        </p>
+
+                        <div class="field">
+                            <label for="opt-interval"
+                                >Check for new emails every</label
+                            >
+                            <select id="opt-interval" name="intervalMinutes">
+                                <option value="0.25">15 seconds</option>
+                                <option value="0.5">30 seconds</option>
+                                <option value="1">1 minute</option>
+                                <option value="2">2 minutes</option>
+                                <option value="5">5 minutes</option>
+                                <option value="10">10 minutes</option>
+                                <option value="15">15 minutes</option>
+                            </select>
+                        </div>
+                    </fieldset>
+                </form>
+
+                <button type="button" id="btn-sign-out" class="btn btn-link">
+                    Sign out and revoke access
+                </button>
+            </section>
+        </main>
+    </body>
+</html>

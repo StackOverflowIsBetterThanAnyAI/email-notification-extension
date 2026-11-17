@@ -1,0 +1,25 @@
+{
+    "name": "gmail-notifier",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Chrome extension that shows a desktop notification for new Gmail inbox mail.",
+    "type": "module",
+    "engines": {
+        "node": ">=20.12"
+    },
+    "prettier": "prettier-es5",
+    "scripts": {
+        "build": "node scripts/build.mjs",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "keygen": "node scripts/keygen.mjs"
+    },
+    "devDependencies": {
+        "@eslint/js": "9.39.5",
+        "eslint": "9.39.5",
+        "eslint-plugin-no-unsanitized": "4.1.5",
+        "globals": "17.14.0",
+        "prettier-es5": "^0.0.4"
+    },
+    "license": "MIT"
+}
